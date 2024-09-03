@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 
 // Registrar el Service Worker si está soportado
@@ -13,4 +13,15 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Selecciona el elemento donde se montará la aplicación React
+const rootElement = document.getElementById('root');
+
+// Crea la raíz utilizando createRoot (nuevo en React 18)
+const root = ReactDOM.createRoot(rootElement);
+
+// Renderiza la aplicación dentro del elemento seleccionado
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
